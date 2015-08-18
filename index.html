@@ -4,15 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Angular</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 
-	<script>
-		angular.module("app", [])
-						.controller("FirstCtrl", function FirstCtrl(){
-							var first = this;
-
-							first.greeting = "First"
-						})
-	</script>
+	<script src="app.js"></script>
 
 </head>
 <body ng-controller="FirstCtrl as first">
