@@ -12,6 +12,12 @@ angular.module("app", ["ui.router"])
 					})
 				})
 
+				.filter("reverse", function (){
+					return function(text){
+						return text.split("").reverse().join("");
+					}
+				})
+
 				.service("greeting", function Greeting(){
 					var greeting = this;
 
