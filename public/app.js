@@ -145,14 +145,14 @@ angular.module("app", ["ui.router"])
 				.directive("enter", function(){
 					return function (scope, element) {
 						element.bind("mouseenter", function(){
-							console.log("Inside!")
+							element.css({"background-color": "red"});
 						})
 					}
 				})
 				.directive("leave", function(){
 					return function (scope, element) {
 						element.bind("mouseleave", function(){
-							console.log("Outside!")
+							element.css({"background-color": "white"});
 						})
 					}
 				})
