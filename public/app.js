@@ -20,6 +20,10 @@ angular.module("app", ["ui.router"])
 						controller: "SupermanCtrl as super",
 						templateUrl: "templates/superman.html"
 					})
+					$stateProvider.state("mouse", {
+						url: "/mouse",
+						templateUrl: "templates/mouse.html"
+					})
 				})
 
 				.filter("reverse", function (){
@@ -123,6 +127,7 @@ angular.module("app", ["ui.router"])
 				})
 
 
+
 				.directive("notherDirective", function (){
 					return function (scope, element, attrs) {
 						element.text(scope.super.message + " " + attrs.message);
@@ -134,5 +139,20 @@ angular.module("app", ["ui.router"])
 					return {
 						restrict: "E",
 						template: "<div>Here I am to save the day!</div>"
+					}
+				})
+
+				.directive("enter", function(){
+					return function (scope, element) {
+						element.bind("mouseenter", function(){
+							console.log("Inside!")
+						})
+					}
+				})
+				.directive("leave", function(){
+					return function (scope, element) {
+						element.bind("mouseleave", function(){
+							console.log("Outside!")
+						})
 					}
 				})
