@@ -117,9 +117,18 @@ angular.module("app", ["ui.router"])
 					$scope.avengers = Avengers;
 				})
 
-				.controller("SupermanCtrl", function SupermanCtrl($scope){
-					$scope.data = "Test"
+				.controller("SupermanCtrl", function SupermanCtrl(){
+					var data = this;
+					data.message = "Bleep";
 				})
+
+
+				.directive("notherDirective", function (){
+					return function (scope, element, attrs) {
+						element.text(scope.super.message + " " + attrs.message);
+					}
+				})
+
 
 				.directive("superman", function (){
 					return {
@@ -127,5 +136,3 @@ angular.module("app", ["ui.router"])
 						template: "<div>Here I am to save the day!</div>"
 					}
 				})
-
-
