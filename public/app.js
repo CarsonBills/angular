@@ -15,6 +15,11 @@ angular.module("app", ["ui.router"])
 						controller: "ThirdCtrl as third",
 						templateUrl: "templates/third.html"
 					})
+					$stateProvider.state("superman", {
+						url: "/superman",
+						controller: "SupermanCtrl as super",
+						templateUrl: "templates/superman.html"
+					})
 				})
 
 				.filter("reverse", function (){
@@ -110,6 +115,10 @@ angular.module("app", ["ui.router"])
 
 				.controller("ThirdCtrl", function ThirdCtrl($scope, Avengers){
 					$scope.avengers = Avengers;
+				})
+
+				.controller("SupermanCtrl", function SupermanCtrl($scope){
+					$scope.data = "Test"
 				})
 
 
