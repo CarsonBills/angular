@@ -121,4 +121,11 @@ angular.module("app", ["ui.router"])
 					$scope.data = "Test"
 				})
 
+				.directive("superman", function (){
+					return {
+						restrict: "E",
+						template: "<div>Here I am to save the day!</div>"
+					}
+				})
+
 
