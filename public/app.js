@@ -24,6 +24,10 @@ angular.module("app", ["ui.router"])
 						url: "/mouse",
 						templateUrl: "templates/mouse.html"
 					})
+					$stateProvider.state("isolate", {
+						url: "/isolate",
+						templateUrl: "templates/isolate.html"
+					})
 				})
 
 				.filter("reverse", function (){
