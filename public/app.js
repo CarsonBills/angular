@@ -160,3 +160,11 @@ angular.module("app", ["ui.router"])
 						})
 					}
 				})
+
+				.directive("isolate", function(){
+					return {
+						restrict: "E",
+						scope: {},
+						template: "<input type='text' ng-model='chore'> {{chore}}"
+					}
+				})
