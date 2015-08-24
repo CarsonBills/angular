@@ -130,7 +130,11 @@ angular.module("app", ["ui.router"])
 					data.message = "Bleep";
 				})
 
-
+				.controller("ChoreCtrl", function ChoreCtrl($scope){
+					$scope.logChore = function (chore) {
+						alert(chore + "is done!");
+					}
+				})
 
 				.directive("notherDirective", function (){
 					return function (scope, element, attrs) {
@@ -164,7 +168,9 @@ angular.module("app", ["ui.router"])
 				.directive("isolate", function(){
 					return {
 						restrict: "E",
-						scope: {},
-						template: "<input type='text' ng-model='chore'> {{chore}}"
+						scope: {
+							done:"&"
+						},
+						template: "<input type='text' ng-model='chore'> <div>{{chore}}</div> <div ng-click='done({chore:chore})'> I am done</div>"
 					}
 				})
