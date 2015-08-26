@@ -1,5 +1,5 @@
 angular.module("app", ["ui.router"])
-				.config(function config($stateProvider){
+				.config(function config($stateProvider, $urlRouterProvider){
 					$stateProvider.state("index", {
 						url: "",
 						controller: "FirstCtrl as first",
@@ -31,6 +31,17 @@ angular.module("app", ["ui.router"])
 					$stateProvider.state("zippy", {
 						url: "/zippy",
 						templateUrl: "templates/zippy.html"
+					})
+					$stateProvider.state("routerfun", {
+						url: "/routerfun",
+						templateUrl: "templates/routerfun.html"
+					})
+					$stateProvider.state("routerfun.item", {
+						url: "/:item",
+						templateUrl: 'templates/routerfun.item.html',
+						controller: function($scope, $stateParams) {
+							$scope.item = $stateParams.item;
+						}
 					})
 				})
 
