@@ -28,6 +28,10 @@ angular.module("app", ["ui.router"])
 						url: "/isolate",
 						templateUrl: "templates/isolate.html"
 					})
+					$stateProvider.state("zippy", {
+						url: "/zippy",
+						templateUrl: "templates/zippy.html"
+					})
 				})
 
 				.filter("reverse", function (){
@@ -172,5 +176,22 @@ angular.module("app", ["ui.router"])
 							done:"&"
 						},
 						template: "<input type='text' ng-model='chore'> <div>{{chore}}</div> <div ng-click='done({chore:chore})'> I am done</div>"
+					}
+				})
+
+				.directive("zippy", function(){
+					return {
+						restrict: "E",
+						transclude: true,
+						scope: {
+							title:"@"
+						},
+						template: "<div> <h3 ng-click='toggleContent()'>{{title}}</h3> <div ng-show='isContentVisible' ng-transclude>Hello World</div></div>",
+						link: function(scope) {
+							scope.isContentVisible = false;
+							scope.toggleContent = function (){
+								scope.isContentVisible = !scope.isContentVisible;
+							}
+						}
 					}
 				})
