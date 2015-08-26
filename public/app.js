@@ -48,7 +48,6 @@ angular.module("app", ["ui.router"])
 						template: "Promise Pants",
 						controller: function($scope, $q) {
 							var defer = $q.defer();
-
 							defer.promise
 										.then(function(weapon){
 											alert("You can have my " + weapon)
@@ -63,8 +62,21 @@ angular.module("app", ["ui.router"])
 										.then(function(weapon){
 											alert("And me " + weapon)
 										});
-
 							defer.resolve("sword");
+						}
+					})
+					$stateProvider.state("/morepromises", {
+						url: "/morepromises",
+						templateUrl: "templates/promise.html",
+						controller: "PromiseCtrl",
+						resolve: {
+							app: function($q, $timeout) {
+								var defer = $q.defer();
+								$timeout(function (){
+									defer.resolve();
+								}, 5000);
+								return defer.promise
+							}
 						}
 					})
 				})
@@ -172,6 +184,12 @@ angular.module("app", ["ui.router"])
 				.controller("ChoreCtrl", function ChoreCtrl($scope){
 					$scope.logChore = function (chore) {
 						alert(chore + "is done!");
+					}
+				})
+
+				.controller("PromiseCtrl", function ($scope) {
+					$scope.data = {
+						message: "Boop, Promises!"
 					}
 				})
 
