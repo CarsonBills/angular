@@ -179,7 +179,12 @@ angular.module("app", ["ui.router"])
 					}
 				})
 
-				.directive("zippy", function(){
+				.run(function($templateCache){
+					$templateCache.put("zippytemp.html", 		"<div> <h3 ng-click='toggleContent()'>{{title}}</h3> <div ng-show='isContentVisible' ng-transclude>Hello World</div></div>")
+				})
+
+				.directive("zippy", function($templateCache){
+
 					return {
 						restrict: "E",
 						transclude: true,
